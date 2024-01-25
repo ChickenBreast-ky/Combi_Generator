@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Combination Generator</title>
+</head>
+<body>
+    <form method="post">
+        {% for group, items in groups.items() %}
+            <div>
+                <strong>{{ group }}:</strong>
+                {% for item in items %}
+                    <label>
+                        <input type="checkbox" name="{{ group }}" value="{{ item }}"
+                        {% if item in selected_items[group] %} checked {% endif %}>
+                        {{ item }}
+                    </label>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">결과 보기</button>
+    </form>
+
+    <h2>Combinations:</h2>
+    <ul>
+        {% for combo in combinations %}
+            <li>{{ combo }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
